@@ -31,8 +31,7 @@ public class PwManager {
     }
 
 
-    //generates the initialization vector (iv)
-    //generation of AES secret-key for encryption/decryption via PBKDF2 with 2^8 iterations
+    //generation of AES secret-key for encryption/decryption via PBKDF2WithHmacSHA256 with 2^8 iterations
     public static SecretKey getKeyFromPassword(String masterPw) throws NoSuchAlgorithmException, InvalidKeySpecException {
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
         KeySpec spec = new PBEKeySpec(masterPw.toCharArray(), "salt".getBytes(), 256, 256);

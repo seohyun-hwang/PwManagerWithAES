@@ -5,6 +5,6 @@ public class Main {
                 "Passwords are entered into the manager by creating entries, including other pieces of data: title, username, and website URL.\n" +
                 "Each entry is stored in an ArrayList."); //welcome message
         PwConsole console = new PwConsole();
-        console.run(); //runs the contents of PwConsole
+        console.run(); //runs the contents of PwConsole.java
     }
 }

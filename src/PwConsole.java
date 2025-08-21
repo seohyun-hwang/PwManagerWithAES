@@ -5,7 +5,7 @@ public class PwConsole {
     private PwManager pwManager = new PwManager();
     private Scanner scanner = new Scanner(System.in);
 
-    //executes all contents of PwConsole
+    //executes all contents of PwConsole; called in Main.java
     public void run() {
         System.out.println("Please enter your master password to access the manager.\n" +
                 "If it is your first time opening the password manager, just press ENTER to proceed."); //asks for user's password
@@ -30,7 +30,8 @@ public class PwConsole {
 
     //performs all the major functions of the password manager
     private void executeUserCommands() {
-        while (true) {
+        boolean continue_whileLoop = true;
+        while (continue_whileLoop) {
             System.out.println("Choose one of the following options:");
             System.out.println(
                     "Type \"L\" if you want to have all the current entries listed into the UI.\n" +
@@ -43,30 +44,40 @@ public class PwConsole {
                             "Type \"Q\" if you want to save and close this manager."
             );
             String response = scanner.nextLine();
-            if (response.equalsIgnoreCase("L")) { //list
-                listPwInfo();
-            } else if (response.equalsIgnoreCase("A")) { //add
-                addPwInfo();
-            } else if (response.equalsIgnoreCase("D")) { //delete
-                deletePwInfo();
-            } else if (response.equalsIgnoreCase("F")) { //search/find
-                lookUpPwInfo();
-            } else if (response.equalsIgnoreCase("E")) { //edit
-                editPwInfo();
-            } else if (response.equalsIgnoreCase("S")) { //save
-                saveAllPwInfos();
-            } else if (response.equalsIgnoreCase("M")) { //change master password
-                changeMasterPw();
-            } else if (response.equalsIgnoreCase("Q")) { //save and quit
-                saveAllPwInfos();
-                System.out.println("Password manager closing...");
-                break;
-            } else { //invalid input
-                System.out.println("Wrong input!");
+            switch(response) {
+                case "L": //list
+                    listPwInfo();
+                    break;
+                case "A": //add
+                    addPwInfo();
+                    break;
+                case "D": //delete
+                    deletePwInfo();
+                    break;
+                case "F": //search/find
+                    lookUpPwInfo();
+                    break;
+                case "E": //edit
+                    editPwInfo();
+                    break;
+                case "S": //save
+                    saveAllPwInfos();
+                    break;
+                case "M": // change master-password
+                    changeMasterPw();
+                    break;
+                case "Q": //save-and-QUIT
+                    saveAllPwInfos();
+                    System.out.println("Password manager closing...");
+                    continue_whileLoop = false;
+                    break;
+                default:
+                    System.out.println("Wrong input!");
             }
-
-            System.out.println("\n\nPress ENTER to continue.");
-            scanner.nextLine();
+            if (continue_whileLoop) { //if the user did not choose save-and-quit
+                System.out.println("\n\nPress ENTER to continue.");
+                scanner.nextLine();
+            }
         }
     }
     //lists all entries

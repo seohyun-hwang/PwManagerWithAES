@@ -67,7 +67,7 @@ public class PwManager {
             file.close();
 
             return true;
-        } catch(IOException ex) {
+        } catch(IOException ex) { //for debugging purposes
             return false;
         } catch (InvalidAlgorithmParameterException e) {
             return false;
@@ -99,7 +99,7 @@ public class PwManager {
             file.close();
 
             return true;
-        } catch(IOException ex) {
+        } catch(IOException ex) { //for debugging purposes
             return false;
         } catch(ClassNotFoundException ex) {
             return false;

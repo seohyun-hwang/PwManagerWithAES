@@ -32,11 +32,11 @@ public class PwManager {
 
 
     //generates the initialization vector (iv)
-    public static GCMParameterSpec generateIv() {
+    /*public static GCMParameterSpec generateIv() {
         byte[] iv = new byte[12];
         new SecureRandom().nextBytes(iv);
         return new GCMParameterSpec(128, iv);
-    }
+    }*/
     //generation of AES secret-key for encryption/decryption via PBKDF2 with 2^8 iterations
     public static SecretKey getKeyFromPassword(String masterPw) throws NoSuchAlgorithmException, InvalidKeySpecException {
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
@@ -48,8 +48,9 @@ public class PwManager {
     private static SealedObject encryptObject(Serializable object, String masterPw) throws NoSuchPaddingException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException,
             InvalidKeyException, IOException, IllegalBlockSizeException, InvalidKeySpecException {
-        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-        cipher.init(Cipher.ENCRYPT_MODE, getKeyFromPassword(masterPw), generateIv());
+        //Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, getKeyFromPassword(masterPw)/*, generateIv()*/);
         SealedObject sealedObject = new SealedObject(object, cipher);
         return sealedObject;
     }
@@ -57,8 +58,9 @@ public class PwManager {
     private static Serializable decryptObject(SealedObject sealedObject, String masterPw) throws NoSuchPaddingException,
             NoSuchAlgorithmException, InvalidKeyException, ClassNotFoundException, BadPaddingException, IllegalBlockSizeException,
             IOException, InvalidKeySpecException, InvalidAlgorithmParameterException {
-        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-        cipher.init(Cipher.DECRYPT_MODE, getKeyFromPassword(masterPw), generateIv());
+        //Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, getKeyFromPassword(masterPw)/*, generateIv()*/);
         Serializable unsealObject = (Serializable) sealedObject.getObject(cipher);
         return unsealObject;
     }

@@ -1,8 +1,8 @@
 All the source code is written in the src folder (Main.java, PwConsole.java, PwInfo.java, and PwManager.java).
-By the way, the AES-encryption function requires SunJCE to work, but SunJCE is probably included in the JDK already.
+By the way, the encryption/decryption requires SunJCE to work, but SunJCE is probably included in the JDK already.
 
 
-One sentence each on the purpose of each Java class in the src folder: 
+1-2 sentences each on the purpose of each Java class in the src folder: 
 -
 • Main.java: contains the main-method, which contains the console.run() function that runs functions of the PwConsole class.
 

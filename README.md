@@ -1,5 +1,5 @@
 All the source code is written in the `src` folder (`Main.java`, `PwConsole.java`, `PwInfo.java`, and `PwManager.java`).<br>
-By the way, the encryption/decryption requires SunJCE to work, but SunJCE is probably included in the JDK already.
+By the way, the encryption/decryption requires SunJCE to work, but it's probably included in the JDK already.
 
 
 1-2 sentences each on the role of each Java class in the `src` folder: 

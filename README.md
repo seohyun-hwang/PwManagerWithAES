@@ -3,7 +3,7 @@
 All the source code is written in the `src` folder (`Main.java`, `PwConsole.java`, `PwInfo.java`, `PwManager.java`).<br>
 By the way, encryption/decryption requires a provider (like SunJCE) to work, but the JDK probably includes SunJCE by default already.
 
-How to use
+How to use: 
 -
 1. Run the main-method
 2. Press ENTER
@@ -16,7 +16,7 @@ How to use
 • <b>`PwManager.java`</b>: has the core functions of the password manager, incl. encryption/decryption and file management; also uses contents of the `PwInfo` class to create an ArrayList called `pwInfoList` in which the user's entries are loaded.<br>
 • <b>`PwInfo.java`</b>: describes the variables/features of the `pwInfoList` ArrayList of the `PwManager` class; also includes getters and setters.<br>
 
-Encryption details
+Encryption details: 
 -
 • <b>Method of encryption</b>: Advanced Encryption Standard (AES)<br>
 • <b>Core encryption/decryption functions (all in `PwManager.java`)</b>: `getKeyFromPassword(String masterPw)`, `encryptObject(Serializable object, String masterPw)`, `decryptObject(SealedObject sealedObject, String masterPw)`<br>

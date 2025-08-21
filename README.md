@@ -19,7 +19,7 @@ How to use:
 Encryption details: 
 -
 • <b>Method of encryption</b>: Advanced Encryption Standard (AES)<br>
-• <b>Core encryption/decryption functions (all in `PwManager.java`)</b>: `getKeyFromPassword(String masterPw)`, `encryptObject(Serializable object, String masterPw)`, `decryptObject(SealedObject sealedObject, String masterPw)`<br>
+• <b>Core encryption/decryption functions (3, all in `PwManager.java`)</b>: `getKeyFromPassword(String masterPw)`, `encryptObject(Serializable object, String masterPw)`, `decryptObject(SealedObject sealedObject, String masterPw)`<br>
 • <b>Plain-text used to derive key</b>: master password<br>
 • <b>Key length</b>: 256 bits<br>
 • <b>Key-expansion iteration-count</b>: 256<br>

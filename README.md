@@ -1,5 +1,7 @@
 <b>Description</b>: Password manager (load, search, add, edit, delete, save, save-and-quit) with AES encryption and OOP; the correct master password is required to gain entry into the manager.<br>
 
+Most of the project was developed within March 1-25 and August 16-18, 2025.
+
 All the source code is written in the `src` folder (`Main.java`, `PwConsole.java`, `PwInfo.java`, `PwManager.java`).<br>
 By the way, encryption/decryption requires a provider (like SunJCE) to work, but the JDK probably includes SunJCE by default already.
 

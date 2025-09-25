@@ -43,30 +43,30 @@ public class PwConsole {
                             "Type \"M\" if you want to change the master password.\n" +
                             "Type \"Q\" if you want to save and close this manager."
             );
-            String response = scanner.nextLine();
+            String response = scanner.nextLine().toLowerCase();
             switch(response) {
-                case "L": //list
+                case "l": //list
                     listPwInfo();
                     break;
-                case "A": //add
+                case "a": //add
                     addPwInfo();
                     break;
-                case "D": //delete
+                case "d": //delete
                     deletePwInfo();
                     break;
-                case "F": //search/find
+                case "f": //search/find
                     lookUpPwInfo();
                     break;
-                case "E": //edit
+                case "e": //edit
                     editPwInfo();
                     break;
-                case "S": //save
+                case "s": //save
                     saveAllPwInfos();
                     break;
-                case "M": // change master-password
+                case "m": // change master-password
                     changeMasterPw();
                     break;
-                case "Q": //save-and-QUIT
+                case "q": //save-and-QUIT
                     saveAllPwInfos();
                     System.out.println("Password manager closing...");
                     continue_whileLoop = false;
@@ -153,33 +153,38 @@ public class PwConsole {
                         "Type \"P\" if you want to edit the password.\n" +
                         "Type \"W\" if you want to edit the website URL."
         );
-        String response = scanner.nextLine();
-        if (response.equalsIgnoreCase("T")) { //edit title
-            System.out.println("What do you want the new title to be?");
-            String newTitle = scanner.nextLine();
-            if (pwManager.lookUp(newTitle) != null) { //checks whether the new title matches the title of one of the existing entries
-                System.out.println("The same title already exists!"); //if they do match, the new title is rejected
-            } else {
-                info.setTitle(newTitle);
-                System.out.println("Title changed!");
-            }
-        } else if (response.equalsIgnoreCase("U")) { //edit username
-            System.out.println("What do you want the new username to be?");
-            String newUsername = scanner.nextLine();
-            info.setUsername(newUsername);
-            System.out.println("Username changed!");
-        } else if (response.equalsIgnoreCase("P")) { //edit password
-            System.out.println("What do you want the new password to be?");
-            String newPassword = scanner.nextLine();
-            info.setPassword(newPassword);
-            System.out.println("Password changed!");
-        } else if (response.equalsIgnoreCase("W")) { //edit website URL
-            System.out.println("What do you want the new website URL to be?");
-            String newSiteURL = scanner.nextLine();
-            info.setSiteURL(newSiteURL);
-            System.out.println("Website URL changed!");
-        } else { //invalid input
-            System.out.println("Wrong input!");
+        String response = scanner.nextLine().toLowerCase();
+        switch (response) {
+            case "t": //edit title
+                System.out.println("What do you want the new title to be?");
+                String newTitle = scanner.nextLine();
+                if (pwManager.lookUp(newTitle) != null) { //checks whether the new title matches the title of one of the existing entries
+                    System.out.println("The same title already exists!"); //if they do match, the new title is rejected
+                } else {
+                    info.setTitle(newTitle);
+                    System.out.println("Title changed!");
+                }
+                break;
+            case "u": //edit username
+                System.out.println("What do you want the new username to be?");
+                String newUsername = scanner.nextLine();
+                info.setUsername(newUsername);
+                System.out.println("Username changed!");
+                break;
+            case "p": //edit password
+                System.out.println("What do you want the new password to be?");
+                String newPassword = scanner.nextLine();
+                info.setPassword(newPassword);
+                System.out.println("Password changed!");
+                break;
+            case "w": //edit website URL
+                System.out.println("What do you want the new website URL to be?");
+                String newSiteURL = scanner.nextLine();
+                info.setSiteURL(newSiteURL);
+                System.out.println("Website URL changed!");
+                break;
+            default: //invalid input
+                System.out.println("Wrong input!");
         }
     }
     //saves all entries to pwManager.data
